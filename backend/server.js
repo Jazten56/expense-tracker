@@ -11,7 +11,13 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware - allows JSON and cross-origin requests
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://expense-tracker-frontend-q4kg.onrender.com'
+  ],
+  credentials: true
+}));
 
 // Database connection
 const pool = new Pool({
